@@ -1,0 +1,76 @@
+server:
+   port: 8383
+   
+   
+spring:
+  application:
+    name: API_GATEWAY
+    
+    
+  cloud:
+    gateway:
+      mvc:
+        routes:
+        - id: MOVIE_SERVICE
+          uri: 
+            lb://MOVIE_SERVICE
+            #http://localhost:8381/movies/**
+          predicates:
+          - Path=/api/admin/**  
+          
+        - id: RATINGS_SERVICE
+          uri: 
+            lb://RATINGS_SERVICE
+            #http://localhost:8382/ratings/**
+          predicates:
+          - Path=/api/public/**          
+
+
+#logging:
+#  level:
+  #  '[org.springframework.security.crypto]': DEBUG
+    
+
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type=TRACE
+
+    
+#logging.level.org.springframework.security:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#spring:
+ # application:
+  #  name: api-gateway-servcie
+  #cloud:
+   # gateway:
+    #  mvc:
+     #   routes:
+      #  - id: movie-service
+       #   uri: lb://movie-service
+        #  predicates:
+         # - Path=/movies/**
+        #- id: movie-service
+         # uri: lb://ratings-service
+          #predicates:
+          #- Path=/ratings/**
+#server:
+#  port: 8383
+#eureka:
+ # instance:
+  #  hostname: localhost
